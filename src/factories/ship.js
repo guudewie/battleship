@@ -1,4 +1,4 @@
-export default Ship = ( units ) => {
+const Ship = ( units ) => {
 
     const length = units;
 
@@ -25,3 +25,4 @@ export default Ship = ( units ) => {
 
 }
 
+export default { Ship }

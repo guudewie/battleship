@@ -1,6 +1,6 @@
 import Ship from "./ship";
 
-export default Gameboard = () => {
+const Gameboard = () => {
 
     const Field = {
         ship : null,
@@ -64,3 +64,5 @@ export default Gameboard = () => {
         gameboardLost
     }
 }
+
+export default { Gameboard }
