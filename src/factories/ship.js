@@ -19,7 +19,6 @@ const Ship = ( units ) => {
     return {
         length,
         hit,
-        hits,
         getHits,
         isSunk
     }
