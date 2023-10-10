@@ -3,7 +3,7 @@ const { Ship } = require("./ship");
 test("return length and hits", () => {
     const testShip = Ship(4)
     expect(testShip.length).toBe(4)
-    expect(testShip.hits).toBe(0)
+    expect(testShip.getHits()).toBe(0)
 })
 
 test("register hit", () => {
