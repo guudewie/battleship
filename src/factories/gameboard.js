@@ -34,9 +34,34 @@ const Gameboard = () => {
         }
     }
 
+    const receiveAttack = (x, y) => {
+
+        let attackedField = fields[x][y];
+
+        if (attackedField.ship !== null) {
+            attackedField.ship.hit()
+            attackedField.hit = true
+        } else {
+            attackedField.miss = true
+        }
+    }
+
+    const gameboardLost = () => {
+        for (const row in fields) {
+            for (const field in fields[row]) {
+                if (fields[row][field].ship !== null && fields[row][field].hit === null) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     return {
         fields,
-        placeShip
+        placeShip,
+        receiveAttack,
+        gameboardLost
     }
 }
 
