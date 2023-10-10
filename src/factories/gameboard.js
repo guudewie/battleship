@@ -25,12 +25,12 @@ const Gameboard = () => {
 
     const placeShip = (shipLength, coords) => {
 
-        let newShip = Ship(shipLength)
+        const newShip = Ship(shipLength)
 
         for (let coordPair in coords) {
             let xCoord = coords[coordPair][0]
             let yCoord = coords[coordPair][1]
-            fields[xCoord][yCoord].ship = newShip
+            fields[xCoord][yCoord].ship = newShip;
         }
     }
 
