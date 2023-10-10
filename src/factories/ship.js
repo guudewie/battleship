@@ -25,4 +25,4 @@ const Ship = ( units ) => {
 
 }
 
-export default { Ship }
+export default Ship;

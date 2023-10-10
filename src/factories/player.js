@@ -12,4 +12,4 @@ const Player = (name) => {
     }
 }
 
-export default { Player }
+export default Player;
