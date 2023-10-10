@@ -1,3 +1,5 @@
+const { Ship } = require("./ship")
+
 const Gameboard = () => {
 
     const Field = {
@@ -21,8 +23,20 @@ const Gameboard = () => {
     // initialize grid
     const fields = _createFieldObject();
 
+    const placeShip = (shipLength, coords) => {
+
+        let newShip = Ship(shipLength)
+
+        for (coordPair in coords) {
+            let xCoord = coords[coordPair][0]
+            let yCoord = coords[coordPair][1]
+            fields[xCoord][yCoord].ship = newShip
+        }
+    }
+
     return {
-        fields
+        fields,
+        placeShip
     }
 }
 
