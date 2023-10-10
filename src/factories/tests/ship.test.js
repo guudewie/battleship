@@ -1,4 +1,4 @@
-const { Ship } = require("../ship.js");
+import Ship from "../ship.js"
 
 test("return length and hits", () => {
     const testShip = Ship(4)

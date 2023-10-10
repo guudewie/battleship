@@ -1,6 +1,6 @@
-const { Ship } = require("./ship")
+import Ship from "./ship";
 
-const Gameboard = () => {
+export default Gameboard = () => {
 
     const Field = {
         ship : null,
@@ -27,7 +27,7 @@ const Gameboard = () => {
 
         let newShip = Ship(shipLength)
 
-        for (coordPair in coords) {
+        for (let coordPair in coords) {
             let xCoord = coords[coordPair][0]
             let yCoord = coords[coordPair][1]
             fields[xCoord][yCoord].ship = newShip
@@ -64,6 +64,3 @@ const Gameboard = () => {
         gameboardLost
     }
 }
-
-
-module.exports = { Gameboard }

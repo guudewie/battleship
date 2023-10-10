@@ -1,4 +1,4 @@
-const Player = (name) => {
+export default Player = (name) => {
 
     const attackEnemyGameboard = (enemyGameboard, coordinateArray) => {
         let xCoord = coordinateArray[0];
@@ -11,5 +11,3 @@ const Player = (name) => {
         attackEnemyGameboard
     }
 }
-
-module.exports = { Player }

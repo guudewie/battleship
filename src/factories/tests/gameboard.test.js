@@ -1,4 +1,4 @@
-const { Gameboard } = require("../gameboard.js")
+import Gameboard from "../gameboard.js"
 
 test("field factory has correct attributes", () => {
     let testGameboard = Gameboard();

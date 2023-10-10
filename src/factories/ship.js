@@ -1,4 +1,4 @@
-const Ship = ( units ) => {
+export default Ship = ( units ) => {
 
     const length = units;
 
@@ -24,6 +24,4 @@ const Ship = ( units ) => {
     }
 
 }
-
-module.exports = { Ship }
 
