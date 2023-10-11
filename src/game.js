@@ -1,27 +1,29 @@
 import Gameboard from "./factories/gameboard"
 import Player from "./factories/player"
+import gameView from "./view/gameView"
+import gameController from "./controller/gameController"
 
 export function Game () {
 
-    let playerA = Player("A")
-    let playerB = Player("B")
+    let playerL = Player("A")
+    let playerR = Player("B")
 
-    let gameboardA = Gameboard()
-    gameboardA.placeShip(1, [[0,0]])
+    const gameboardL = Gameboard()
+    gameboardL.placeShip(3, [[0,0], [0,1], [0,2]])
+    gameboardL.placeShip(2, [[3,4], [2,4]])
+    gameView.renderLeftGameboard(gameboardL)
 
-    let gameboardB = Gameboard()
-    gameboardB.placeShip(1, [[9,9]])
+    const gameboardR = Gameboard()
+    gameboardR.placeShip(4, [[8,8], [8,7], [8,6], [8,5]])
+    gameboardR.placeShip(2, [[2,2], [3,2]])
+    gameView.renderRightGameboard(gameboardR)
 
     while (true) {
-        let playerAX = prompt("PLAYER A X-COORDINATE: ")
-        let playerAY = prompt("PLAYER A Y-COORDINATE: ")
-        playerA.attackEnemyGameboard(gameboardB, [playerAX, playerAY])
-        if (gameboardB.gameboardLost() == true) return "Player B lost"
+        gameController.makeMoveLeftPlayer(gameboardR)
+        if (gameboardR.gameboardLost() == true) return "Player Right lost"
 
-        let playerBX = prompt("PLAYER B X-COORDINATE: ")
-        let playerBY = prompt("PLAYER B Y-COORDINATE: ")
-        playerB.attackEnemyGameboard(gameboardA, [playerBX, playerBY])
-        if (gameboardA.gameboardLost() == true) return "Player A lost"
+        gameController.makeMoveRightPlayer(gameboardL)
+        if (gameboardL.gameboardLost() == true) return "Player Left lost"
     }
 };
 

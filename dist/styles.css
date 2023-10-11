@@ -53,18 +53,23 @@ footer {
 
 .numbering {
     grid-column: 2 / -1;
-    font-size: 1.2rem;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+
+    font-size: 1.2rem;
+    padding: 1rem;
 }
 
 .lettering {
     grid-row: 2 / -1;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+
+    font-size: 1.2rem;
+    padding: 1rem;
 }
 
 #gameboardOne,
@@ -72,4 +77,49 @@ footer {
     grid-row: 2 / -1;
     grid-column: 2 / -1;
     border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
 }
+
+.field {
+    height: 10%;
+    width: 10%;
+    border: 1px solid black;
+}
+
+.water,
+.miss {
+    background-color: #85abc7;
+    position: relative;
+}
+
+.ship,
+.hitShip {
+    background-color: #030507;
+    position: relative;
+}
+
+.hitShip:before,
+.miss:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    transform: rotate(45deg);
+    left: 0;
+    border-bottom: 2px solid #ffffff;
+    width: 100%;
+}
+
+.hitShip:after,
+.miss:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    transform: rotate(-45deg);
+    left: 0;
+    border-bottom: 2px solid #ffffff;
+    width: 100%;
+}
+
+
+

@@ -17,14 +17,13 @@ const gameView = (function () {
                 let cell = document.createElement("div")
 
                 // add field class and appropriate field state styling
-                cell.classList.add("field", hitMissShip(gameboard.fields[row][field]))
+                cell.classList.add("field", _hitMissShip(gameboard.fields[row][field]))
 
                 // add data row and column attribute
                 cell.dataset.row = row;
                 cell.dataset.column = field
 
                 // append field to gameboard
-                console.log(gameboardElement)
                 gameboardElement.appendChild(cell)
             }
         }
@@ -43,7 +42,7 @@ const gameView = (function () {
         }
     }
 
-    const hitMissShip = (field) => {
+    const _hitMissShip = (field) => {
 
         if (field.ship !== null && field.hit !== null) return "hitShip"  // ship that has been hit
         if (field.ship !== null && field.hit == null) return "ship"  // ship not hit yet
@@ -66,16 +65,18 @@ const gameView = (function () {
 
         setUpFieldListenerRight (callback) {
             setUpFieldListener(gameboardRight, callback)
-        }
+        },
+
+        clearLeftGameboard () {
+            clearGameboard (gameboardLeft)
+        },
+
+        clearRightGameboard () {
+            clearGameboard (gameboardRight)
+        },
+
     }
 
 })();
 
 export default gameView;
-
-// differentiate between player and computer board
-
-
-// block gameboard input
-
-// set up event listeners for gameboard
