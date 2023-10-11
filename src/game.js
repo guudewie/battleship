@@ -24,3 +24,12 @@ export function Game () {
         if (gameboardA.gameboardLost() == true) return "Player A lost"
     }
 };
+
+
+
+// TODO
+
+// render DOM gameboards
+//      with visualizing hit/miss/water
+
+// receive user input
