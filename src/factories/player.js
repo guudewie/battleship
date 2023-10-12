@@ -1,14 +1,19 @@
 const Player = (name) => {
 
-    const attackEnemyGameboard = (enemyGameboard, coordinateArray) => {
-        let xCoord = coordinateArray[0];
-        let yCoord = coordinateArray[1];
-        enemyGameboard.receiveAttack(xCoord, yCoord)
+    let turn = false;
+
+    const isTurn = () => {
+        return turn
+    }
+
+    const toggleTurn = () => {
+        turn = turn ? false : true
     }
 
     return {
         name,
-        attackEnemyGameboard
+        isTurn,
+        toggleTurn
     }
 }
 
