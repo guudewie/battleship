@@ -22,6 +22,8 @@ const gameController = (function () {
             if (gameboardRight.gameboardLost() == true) return console.log("Player Right lost")
 
             // initiate next move
+            gameboardRight.getLastHit() ?
+            _makeMoveLeftPlayer(gameboardLeft, gameboardRight) :
             _makeMoveRightPlayer(gameboardLeft, gameboardRight);
         })
     }
@@ -42,10 +44,13 @@ const gameController = (function () {
             if (gameboardLeft.gameboardLost() == true) return console.log("Player Left lost")
 
             // initiate next move
-            _makeMoveLeftPlayer(gameboardLeft, gameboardRight)
+            gameboardLeft.getLastHit() ?
+            _makeMoveRightPlayer(gameboardLeft, gameboardRight) :
+            _makeMoveLeftPlayer(gameboardLeft, gameboardRight);
         })
     }
 
+    // the functions makemoveplayer recursively call each other inside another untill the win condition stops the game
     const startMoves = (gameboardLeft, gameboardRight) => {
         _makeMoveLeftPlayer(gameboardLeft, gameboardRight)
     }

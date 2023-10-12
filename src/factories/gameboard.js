@@ -8,6 +8,12 @@ const Gameboard = () => {
         miss : null
     }
 
+    let lastOneWasHit = false;
+
+    const getLastHit = () => {
+        return lastOneWasHit
+    }
+
     // create gameboard grid with Field object in each field
     const _createFieldObject = (dim = 10) => {
         let grid = [];
@@ -39,10 +45,12 @@ const Gameboard = () => {
         let attackedField = fields[x][y];
 
         if (attackedField.ship !== null) {
-            attackedField.ship.hit()
-            attackedField.hit = true
+            attackedField.ship.hit();
+            attackedField.hit = true;
+            lastOneWasHit = true;
         } else {
-            attackedField.miss = true
+            attackedField.miss = true;
+            lastOneWasHit = false;
         }
     }
 
@@ -69,7 +77,8 @@ const Gameboard = () => {
         placeShip,
         receiveAttack,
         gameboardLost,
-        isValidMove
+        isValidMove,
+        getLastHit
     }
 }
 
