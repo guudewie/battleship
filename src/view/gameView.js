@@ -37,8 +37,12 @@ const gameView = (function () {
     }
 
     const setUpFieldListener = (gameboardElement, callback) => {
-        while (gameboardElement.firstChild) {
-            gameboardElement.lastChild.addEventListener("click", (e) => callback(e))
+
+        let childDivs = gameboardElement.querySelectorAll(".field")
+
+        for (let i = 0; i < childDivs.length; i++) {
+            const element = childDivs[i];
+            element.addEventListener("click", (e) => callback(e))
         }
     }
 
