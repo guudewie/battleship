@@ -6,25 +6,53 @@ import Ship from "../factories/ship";
 // this module combines dom (gameView) and logic functions (factories)
 const gameController = (function () {
     
-    const makeMoveLeftPlayer = (gameboardRight) => {
+    const _makeMoveLeftPlayer = (gameboardLeft, gameboardRight) => {
+        
         gameView.setUpFieldListenerRight((field) => {
+
+            // dont set up listener if field was already played
+            if (!gameboardRight.isValidMove(field.dataset.row, field.dataset.column)) return
+
+            // register attack and render updated gameboard
             gameboardRight.receiveAttack(field.dataset.row, field.dataset.column);
             gameView.clearRightGameboard();
             gameView.renderRightGameboard(gameboardRight);
+
+            // return if game is over
+            if (gameboardRight.gameboardLost() == true) return console.log("Player Right lost")
+
+            // initiate next move
+            _makeMoveRightPlayer(gameboardLeft, gameboardRight);
         })
     }
 
-    const makeMoveRightPlayer = (gameboardLeft) => {
+    const _makeMoveRightPlayer = (gameboardLeft, gameboardRight) => {
+
         gameView.setUpFieldListenerLeft((field) => {
+
+            // dont set up listener if field was already played
+            if (!gameboardLeft.isValidMove(field.dataset.row, field.dataset.column)) return
+
+            // register attack and render updated gameboard
             gameboardLeft.receiveAttack(field.dataset.row, field.dataset.column);
             gameView.clearLeftGameboard();
             gameView.renderLeftGameboard(gameboardLeft);
+
+            // return if game is over
+            if (gameboardLeft.gameboardLost() == true) return console.log("Player Left lost")
+
+            // initiate next move
+            _makeMoveLeftPlayer(gameboardLeft, gameboardRight)
         })
     }
 
+    const startMoves = (gameboardLeft, gameboardRight) => {
+        _makeMoveLeftPlayer(gameboardLeft, gameboardRight)
+    }
+
+
     return {
-        makeMoveLeftPlayer,
-        makeMoveRightPlayer
+        startMoves
     }
 })();
 

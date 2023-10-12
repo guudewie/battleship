@@ -55,21 +55,13 @@ const gameView = (function () {
         return "water" // just water
     }
 
-    const muteGameboard = (gameboardElement) => {
-        gameboardElement.style.pointerEvents = "none";
-    }
-
-    const unMuteGameboard = (gameboardElement) => {
-        gameboardElement.style.pointerEvents = "initial";
-    }
-
     return {
         renderLeftGameboard (gameboard) {
             renderGameboard(gameboard, gameboardLeft)
         },
 
         renderRightGameboard (gameboard) {
-            renderGameboard(gameboard, gameboardRight)
+            renderGameboard(gameboard, gameboardRight, false)
         },
 
         setUpFieldListenerLeft (callback) {
@@ -87,22 +79,6 @@ const gameView = (function () {
         clearRightGameboard () {
             clearGameboard (gameboardRight)
         },
-
-        muteRightGameboard () {
-            muteGameboard(gameboardRight)
-        },
-
-        muteLeftGameboard () {
-            muteGameboard(gameboardLeft)
-        },
-
-        unMuteRightGameboard () {
-            unMuteGameboard(gameboardRight)
-        },
-
-        unMuteLeftGameboard () {
-            unMuteGameboard(gameboardLeft)
-        }
     }
 
 })();

@@ -5,8 +5,8 @@ import gameController from "./controller/gameController"
 
 export function Game () {
 
-    let playerL = Player("A")
-    let playerR = Player("B")
+    let playerL = Player("L")
+    let playerR = Player("R")
 
     const gameboardL = Gameboard()
     gameboardL.placeShip(3, [[0,0], [0,1], [0,2]])
@@ -18,19 +18,6 @@ export function Game () {
     gameboardR.placeShip(2, [[2,2], [3,2]])
     gameView.renderRightGameboard(gameboardR)
 
-    gameController.makeMoveLeftPlayer(gameboardR)
-    if (gameboardR.gameboardLost() == true) return "Player Right lost"
-
-    gameController.makeMoveRightPlayer(gameboardL)
-    if (gameboardL.gameboardLost() == true) return "Player Left lost"
+    gameController.startMoves(gameboardL, gameboardR)
     
 };
-
-
-
-// TODO
-
-// render DOM gameboards
-//      with visualizing hit/miss/water
-
-// receive user input
