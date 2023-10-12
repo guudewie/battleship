@@ -18,6 +18,7 @@ const gameView = (function () {
 
                 // add field class and appropriate field state styling
                 cell.classList.add("field", _hitMissShip(gameboard.fields[row][field]))
+                if (!visible) cell.classList.add("invisible")
 
                 // add data row and column attribute
                 cell.dataset.row = row;
@@ -54,6 +55,14 @@ const gameView = (function () {
         return "water" // just water
     }
 
+    const muteGameboard = (gameboardElement) => {
+        gameboardElement.style.pointerEvents = "none";
+    }
+
+    const unMuteGameboard = (gameboardElement) => {
+        gameboardElement.style.pointerEvents = "initial";
+    }
+
     return {
         renderLeftGameboard (gameboard) {
             renderGameboard(gameboard, gameboardLeft)
@@ -79,6 +88,21 @@ const gameView = (function () {
             clearGameboard (gameboardRight)
         },
 
+        muteRightGameboard () {
+            muteGameboard(gameboardRight)
+        },
+
+        muteLeftGameboard () {
+            muteGameboard(gameboardLeft)
+        },
+
+        unMuteRightGameboard () {
+            unMuteGameboard(gameboardRight)
+        },
+
+        unMuteLeftGameboard () {
+            unMuteGameboard(gameboardLeft)
+        }
     }
 
 })();
