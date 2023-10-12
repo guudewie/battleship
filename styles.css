@@ -89,13 +89,13 @@ footer {
 
 .water,
 .miss {
-    background-color: #85abc7;
+    background-color: #c4daeb;
     position: relative;
 }
 
 .ship,
 .hitShip {
-    background-color: #030507;
+    background-color: #ebc6c5;
     position: relative;
 }
 
@@ -110,6 +110,11 @@ footer {
     width: 100%;
 }
 
+.hitShip:before {
+    border-bottom: 2px solid #ff0000;
+}
+
+
 .hitShip:after,
 .miss:after {
     content: " ";
@@ -121,5 +126,11 @@ footer {
     width: 100%;
 }
 
+.hitShip:after {
+    border-bottom: 2px solid #ff0000;   
+}
 
+.invisible {
+    background-color: grey;
+}
 
