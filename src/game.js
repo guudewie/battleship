@@ -18,13 +18,12 @@ export function Game () {
     gameboardR.placeShip(2, [[2,2], [3,2]])
     gameView.renderRightGameboard(gameboardR)
 
-    while (true) {
-        gameController.makeMoveLeftPlayer(gameboardR)
-        if (gameboardR.gameboardLost() == true) return "Player Right lost"
+    gameController.makeMoveLeftPlayer(gameboardR)
+    if (gameboardR.gameboardLost() == true) return "Player Right lost"
 
-        gameController.makeMoveRightPlayer(gameboardL)
-        if (gameboardL.gameboardLost() == true) return "Player Left lost"
-    }
+    gameController.makeMoveRightPlayer(gameboardL)
+    if (gameboardL.gameboardLost() == true) return "Player Left lost"
+    
 };
 
 

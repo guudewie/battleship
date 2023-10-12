@@ -10,7 +10,7 @@ const gameController = (function () {
         gameView.setUpFieldListenerRight((field) => {
             gameboardRight.receiveAttack(field.dataset.row, field.dataset.column);
             gameView.clearRightGameboard();
-            gameView.renderRightGameboard();
+            gameView.renderRightGameboard(gameboardRight);
         })
     }
 
@@ -18,7 +18,7 @@ const gameController = (function () {
         gameView.setUpFieldListenerLeft((field) => {
             gameboardLeft.receiveAttack(field.dataset.row, field.dataset.column);
             gameView.clearLeftGameboard();
-            gameView.clearRightGameboard();
+            gameView.renderLeftGameboard(gameboardLeft);
         })
     }
 

@@ -42,7 +42,7 @@ const gameView = (function () {
 
         for (let i = 0; i < childDivs.length; i++) {
             const element = childDivs[i];
-            element.addEventListener("click", (e) => callback(e))
+            element.addEventListener("click", () => callback(element))
         }
     }
 
