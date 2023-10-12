@@ -62,3 +62,15 @@ test("gameboard lost", () => {
 
     expect(testGameboard.gameboardLost()).toBeTruthy()
 })
+
+test("move is correctly validated", () => {
+    let testGameboard = Gameboard();
+    testGameboard.placeShip(4, [[0,0], [0,1], [0,2], [0,3]]);
+    testGameboard.receiveAttack(0,0);
+    testGameboard.receiveAttack(0,1);
+    testGameboard.receiveAttack(0,2);
+
+    expect(testGameboard.isValidMove(0,0)).toBeFalsy()
+    expect(testGameboard.isValidMove(0,3)).toBeTruthy()
+    expect(testGameboard.isValidMove(4,4)).toBeTruthy()
+})

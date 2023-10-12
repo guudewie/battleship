@@ -57,11 +57,19 @@ const Gameboard = () => {
         return true;
     }
 
+    const isValidMove = (x, y) => {
+        let field = fields[x][y];
+        if (field.hit || field.miss) return false
+
+        return true
+    }
+
     return {
         fields,
         placeShip,
         receiveAttack,
-        gameboardLost
+        gameboardLost,
+        isValidMove
     }
 }
 
