@@ -24,6 +24,10 @@ body {
     background-color: var(--color-background);
 }
 
+h1 {
+    font-weight: 100;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -103,9 +107,9 @@ footer {
 
 .hitShip:before,
 .miss:before {
-    content: " ";
+    content: "MISS";
     position: absolute;
-    top: 50%;
+    top: 30%;
     transform: rotate(45deg);
     left: 0;
     border-bottom: 2px solid var(--color-miss-cross);
@@ -113,23 +117,8 @@ footer {
 }
 
 .hitShip:before {
-    border-bottom: 2px solid var(--color-hit-cross);
-}
-
-
-.hitShip:after,
-.miss:after {
-    content: " ";
-    position: absolute;
-    top: 50%;
-    transform: rotate(-45deg);
-    left: 0;
-    border-bottom: 2px solid var(--color-miss-cross);
-    width: 100%;
-}
-
-.hitShip:after {
-    border-bottom: 2px solid var(--color-hit-cross);   
+    border-bottom: 2px solid black;
+    content: "HIT";
 }
 
 .invisible {
