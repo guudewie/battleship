@@ -1,6 +1,4 @@
 import gameView from "../view/gameView";
-import Gameboard from "../factories/gameboard";
-import Ship from "../factories/ship";
 import Computer from "../factories/computer";
 
 
@@ -9,6 +7,7 @@ const gameController = (function () {
 
     const _timeOut = 700;
     
+    // real player
     const _makeMoveLeftPlayer = (gameboardLeft, gameboardRight) => {
         
         gameView.setUpFieldListenerRight((field) => {
@@ -31,6 +30,7 @@ const gameController = (function () {
         })
     }
 
+    // computer player
     const _makeMoveRightPlayer = (gameboardLeft, gameboardRight) => {
 
         let computerChoice = Computer.getRandomMove(gameboardLeft);
