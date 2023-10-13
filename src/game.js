@@ -11,6 +11,8 @@ export function Game () {
     const gameboardL = Gameboard()
     gameboardL.placeShip(3, [[0,0], [0,1], [0,2]])
     gameboardL.placeShip(2, [[3,4], [2,4]])
+    gameboardL.placeShip(2, [[9,9], [8,9]])
+    gameboardL.placeShip(5, [[6,6], [6,5], [6,4], [6,3], [6,2]])
     gameView.renderLeftGameboard(gameboardL)
 
     const gameboardR = Gameboard()
@@ -19,5 +21,4 @@ export function Game () {
     gameView.renderRightGameboard(gameboardR)
 
     gameController.startMoves(gameboardL, gameboardR)
-    
 };

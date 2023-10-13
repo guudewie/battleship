@@ -33,11 +33,10 @@ const gameController = (function () {
 
     const _makeMoveRightPlayer = (gameboardLeft, gameboardRight) => {
 
-        
-        let computerChoice = Computer.getRandomMove();
+        let computerChoice = Computer.getRandomMove(gameboardLeft);
 
         while (!gameboardLeft.isValidMove(computerChoice[0], computerChoice[1])) {
-            computerChoice = Computer.getRandomMove();
+            computerChoice = Computer.getRandomMove(gameboardLeft);
         }
 
         // register attack and render updated gameboard
