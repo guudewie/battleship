@@ -4,6 +4,9 @@
     --color-primary: #85abc7;
     --color-secondary: #bdd2e0;
     --color-accent: #426f8f;
+
+    --color-miss-cross: #203544;
+    --color-hit-cross: #df58be;
 }
 
 *, *::before, *::after {
@@ -88,13 +91,13 @@ footer {
 
 .water,
 .miss {
-    background-color: #c4daeb;
+    background-color: var(--color-background);
     position: relative;
 }
 
 .ship,
 .hitShip {
-    background-color: #ebc6c5;
+    background-color: var(--color-accent);
     position: relative;
 }
 
@@ -105,12 +108,12 @@ footer {
     top: 50%;
     transform: rotate(45deg);
     left: 0;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 2px solid var(--color-miss-cross);
     width: 100%;
 }
 
 .hitShip:before {
-    border-bottom: 2px solid #ff0000;
+    border-bottom: 2px solid var(--color-hit-cross);
 }
 
 
@@ -121,15 +124,15 @@ footer {
     top: 50%;
     transform: rotate(-45deg);
     left: 0;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 2px solid var(--color-miss-cross);
     width: 100%;
 }
 
 .hitShip:after {
-    border-bottom: 2px solid #ff0000;   
+    border-bottom: 2px solid var(--color-hit-cross);   
 }
 
 .invisible {
-    background-color: grey;
+    background-color: var(--color-background);
 }
 
