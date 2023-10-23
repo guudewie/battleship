@@ -1,5 +1,4 @@
 import Gameboard from "./factories/gameboard"
-import Player from "./factories/player"
 import gameView from "./view/gameView"
 import gameController from "./controller/gameController"
 import Layout from "./factories/layout"
