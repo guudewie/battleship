@@ -2,17 +2,21 @@ import gameView from "../view/gameView";
 import Computer from "../factories/computer";
 import Layout from "../factories/layout";
 import Gameboard from "../factories/gameboard";
+import { Game } from "../game";
 
 
 // this module combines dom (gameView) and logic functions (factories)
 const gameController = (function () {
 
-    const _timeOut = 700;
+    const _timeOut = 0;
     
     // real player
     const _makeMoveLeftPlayer = (gameboardLeft, gameboardRight) => {
         
         gameView.setUpFieldListenerRight((field) => {
+
+            //set ui message box empty
+            gameView.setMessage()
 
             // dont set up listener if field was already played
             if (!gameboardRight.isValidMove(field.dataset.row, field.dataset.column)) return
@@ -23,7 +27,7 @@ const gameController = (function () {
             gameView.renderRightGameboard(gameboardRight);
 
             // return if game is over
-            if (gameboardRight.gameboardLost() == true) return console.log("Player Right lost")
+            if (gameboardRight.gameboardLost() == true) gameView.setMessage("LeftWon")
 
             // initiate next move
             gameboardRight.getLastHit() ?
@@ -47,7 +51,7 @@ const gameController = (function () {
         gameView.renderLeftGameboard(gameboardLeft);
 
         // return if game is over
-        if (gameboardLeft.gameboardLost() == true) return console.log("Player Left lost")
+        if (gameboardLeft.gameboardLost() == true) gameView.setMessage("RightWon")
 
         // initiate next move
         gameboardLeft.getLastHit() ?
@@ -64,17 +68,17 @@ const gameController = (function () {
     const shuffleLayout = () => {
         gameView.setUpShuffleListener(() => {
 
+            // clear previous boat layout
             gameView.clearLeftGameboard()
 
+            // create new Gameboard object with random boat layout
             const newGameboardL = Gameboard()
-
             const playerName = Layout.applyLayout(newGameboardL)
-            
-            gameView.setPlayerName(playerName)
-
+            gameView.setPlayerName(playerName) // set respective name in UI
             gameView.renderLeftGameboard(newGameboardL)
 
-            currentGameboardL = newGameboardL;
+            // save latest gameboard to storage
+            currentGameboardL = newGameboardL; 
         })
     }
 
@@ -82,9 +86,24 @@ const gameController = (function () {
 
         gameView.setStartListener(() => {
 
-            let newGameboardL = getCurrentGameboardL();
+            //set ui message, that left attacs first
+            gameView.setMessage("LeftStart")
 
+            // initialize game with shuffled gameboard
+            let newGameboardL = getCurrentGameboardL();
             gameController.startMoves(newGameboardL, gameboardR)
+
+            // deactivate shuffle button
+            gameView.muteShuffle()
+
+            gameView.startToRestart(() => {
+                gameView.clearLeftGameboard()
+                gameView.clearRightGameboard()
+                gameView.unMuteShuffle()
+                gameView.restartToStart(() => startGame())
+                Game()
+            })
+
         })
     }
 
