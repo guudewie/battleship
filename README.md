@@ -1,6 +1,6 @@
 # battleship
 battleship game
 
-💡💡 Click Link to view live Version!! 💡💡
+:bulb: Click Link to view live Version!! :bulb:
 
-<Guudewie.github.io/battleship>
+[Guudewie.github.io/battleship](Guudewie.github.io/battleship)
