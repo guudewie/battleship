@@ -8,7 +8,7 @@ import { Game } from "../game";
 // this module combines dom (gameView) and logic functions (factories)
 const gameController = (function () {
 
-    const _timeOut = 0;
+    const _timeOut = 700;
     
     // real player
     const _makeMoveLeftPlayer = (gameboardLeft, gameboardRight) => {
