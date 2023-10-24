@@ -1,5 +1,7 @@
 import gameView from "../view/gameView";
 import Computer from "../factories/computer";
+import Layout from "../factories/layout";
+import Gameboard from "../factories/gameboard";
 
 
 // this module combines dom (gameView) and logic functions (factories)
@@ -59,9 +61,46 @@ const gameController = (function () {
         _makeMoveLeftPlayer(gameboardLeft, gameboardRight)
     }
 
+    const shuffleLayout = () => {
+        gameView.setUpShuffleListener(() => {
+
+            gameView.clearLeftGameboard()
+
+            const newGameboardL = Gameboard()
+
+            const playerName = Layout.applyLayout(newGameboardL)
+            
+            gameView.setPlayerName(playerName)
+
+            gameView.renderLeftGameboard(newGameboardL)
+
+            currentGameboardL = newGameboardL;
+        })
+    }
+
+    const startGame = (gameboardR) => {
+
+        gameView.setStartListener(() => {
+
+            let newGameboardL = getCurrentGameboardL();
+
+            gameController.startMoves(newGameboardL, gameboardR)
+        })
+    }
+
+    let currentGameboardL;
+
+    const getCurrentGameboardL = () => {
+        return currentGameboardL
+    }
+
+
 
     return {
-        startMoves
+        startMoves,
+        shuffleLayout,
+        getCurrentGameboardL,
+        startGame
     }
 })();
 

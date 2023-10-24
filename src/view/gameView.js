@@ -47,12 +47,28 @@ const gameView = (function () {
         }
     }
 
+    const setUpShuffleListener = (callback) => {
+        let shuffle = document.getElementById("shuffle")
+        shuffle.addEventListener("click", () => callback())
+    }
+
+    const setStartListener = (callback) => {
+        let start = document.getElementById("start")
+        start.addEventListener("click", () => callback())
+    }
+
     const _hitMissShip = (field) => {
 
         if (field.ship !== null && field.hit !== null) return "hitShip"  // ship that has been hit
         if (field.ship !== null && field.hit == null) return "ship"  // ship not hit yet
         if (field.miss) return "miss" // water but already hit: miss
         return "water" // just water
+    }
+
+    const setPlayerName = (name) => {
+        let playerNameDOM = document.getElementById("playerName");
+        console.log(name)
+        playerNameDOM.innerHTML = name;
     }
 
     return {
@@ -79,6 +95,10 @@ const gameView = (function () {
         clearRightGameboard () {
             clearGameboard (gameboardRight)
         },
+
+        setPlayerName,
+        setUpShuffleListener,
+        setStartListener
     }
 
 })();

@@ -5,17 +5,19 @@ import Layout from "./factories/layout"
 
 export function Game () {
 
-
-    
-
+    // initialize gameboard L
     const gameboardL = Gameboard()
-    console.log(Layout.applyLayout(gameboardL))
+    gameView.setPlayerName(Layout.applyLayout(gameboardL))
     gameView.renderLeftGameboard(gameboardL)
 
+    // initialize gameboard R
     const gameboardR = Gameboard()
-    gameboardR.placeShip(4, [[8,8], [8,7], [8,6], [8,5]])
-    gameboardR.placeShip(2, [[2,2], [3,2]])
+    Layout.applyLayout(gameboardR)
     gameView.renderRightGameboard(gameboardR)
 
-    gameController.startMoves(gameboardL, gameboardR)
+    // initialize shuffle button listener and logic
+    gameController.shuffleLayout()
+
+    // initialize start button listener and logic
+    gameController.startGame(gameboardR)
 };

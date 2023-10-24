@@ -67,7 +67,6 @@ const Layout = (function () {
         let randomChoice = _getRandomLayout();
         let funnyName = randomChoice.name;
         let layout = randomChoice.layout;
-        console.log(layout)
         for (let i = 0; i < layout.length; i++) {
             let ship = layout[i];
             
