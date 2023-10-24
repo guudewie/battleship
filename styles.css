@@ -2,7 +2,7 @@
     --color-text: #030507;
     --color-background: #f5f8fa;
     --color-primary: #85abc7;
-    --color-secondary: #bdd2e0;
+    --color-mute: #9c9c9c;
     --color-accent: #426f8f;
 
     --color-miss-cross: #203544;
@@ -83,12 +83,13 @@ main {
 
 .mute {
     text-decoration: none;
-    border: 1px solid black;
+    border: 1.5px solid var(--color-mute);
     background-color: var(--color-background);
     border-radius: .4rem;
     height: 2rem;
     width: 9rem;
     font-size: 1.1rem;
+    color: var(--color-mute);
 
     pointer-events: none;
 }
@@ -158,6 +159,10 @@ main {
     height: 10%;
     width: 10%;
     border: 1px solid black;
+}
+
+.fieldMute {
+    pointer-events: none;
 }
 
 .water,
