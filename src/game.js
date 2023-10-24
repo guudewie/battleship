@@ -5,6 +5,8 @@ import Layout from "./factories/layout"
 
 export function Game () {
 
+    gameView.setMessage("init")
+
     // initialize gameboard L
     const gameboardL = Gameboard()
     gameView.setPlayerName(Layout.applyLayout(gameboardL))

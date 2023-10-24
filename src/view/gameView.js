@@ -64,6 +64,28 @@ const gameView = (function () {
         shuffle.classList.remove("mute")
     }
 
+    const muteStart = () => {
+        let start = document.getElementById("start")
+        start.classList.remove("button")
+        start.classList.add("mute")
+    }
+
+    const unMuteStart = () => {
+        let start = document.getElementById("start")
+        start.classList.add("button")
+        start.classList.remove("mute")
+    }
+
+    const muteGameboard = () => {
+        gameboardLeft.classList.add("fieldMute")
+        gameboardRight.classList.add("fieldMute")
+    }
+
+    const unMuteGameboard = () => {
+        gameboardLeft.classList.remove("fieldMute")
+        gameboardRight.classList.remove("fieldMute")
+    }
+
     const setStartListener = (callback) => {
         let start = document.getElementById("start")
         start.addEventListener("click", () => callback())
@@ -144,9 +166,13 @@ const gameView = (function () {
         setPlayerName,
         setUpShuffleListener,
         setStartListener,
-        muteShuffle,
         startToRestart,
         unMuteShuffle,
+        muteShuffle,
+        unMuteStart,
+        muteStart,
+        unMuteGameboard,
+        muteGameboard,
         restartToStart,
         setMessage
     }

@@ -27,7 +27,10 @@ const gameController = (function () {
             gameView.renderRightGameboard(gameboardRight);
 
             // return if game is over
-            if (gameboardRight.gameboardLost() == true) gameView.setMessage("LeftWon")
+            if (gameboardRight.gameboardLost() == true) {
+                gameView.setMessage("LeftWon")
+                gameView.muteGameboard() // make gameboard not playable
+            }
 
             // initiate next move
             gameboardRight.getLastHit() ?
@@ -51,7 +54,10 @@ const gameController = (function () {
         gameView.renderLeftGameboard(gameboardLeft);
 
         // return if game is over
-        if (gameboardLeft.gameboardLost() == true) gameView.setMessage("RightWon")
+        if (gameboardLeft.gameboardLost() == true) {
+            gameView.setMessage("RightWon")
+            gameView.muteGameboard() // make gameboard not playable
+        }
 
         // initiate next move
         gameboardLeft.getLastHit() ?
@@ -78,13 +84,18 @@ const gameController = (function () {
             gameView.renderLeftGameboard(newGameboardL)
 
             // save latest gameboard to storage
-            currentGameboardL = newGameboardL; 
+            currentGameboardL = newGameboardL;
+
+            gameView.unMuteStart() // make start button available again
+            gameView.unMuteGameboard() // make gameboard playable available again
         })
     }
 
     const startGame = (gameboardR) => {
 
         gameView.setStartListener(() => {
+
+            gameView.unMuteStart()
 
             //set ui message, that left attacs first
             gameView.setMessage("LeftStart")
@@ -97,6 +108,7 @@ const gameController = (function () {
             gameView.muteShuffle()
 
             gameView.startToRestart(() => {
+                gameView.muteStart()
                 gameView.clearLeftGameboard()
                 gameView.clearRightGameboard()
                 gameView.unMuteShuffle()
